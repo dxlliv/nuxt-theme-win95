@@ -29,7 +29,7 @@ export default {
     },
   },
   commands: {
-    calculator: (app: IApplicationController) => {
+    calculator: (app: any) => {
       const existing = app.getFirstWindowByModel('main')
       if (existing) {
         existing.actions.setActive(true)

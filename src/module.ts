@@ -1,17 +1,19 @@
+import { existsSync } from 'node:fs'
+import type { NuxtModule } from '@nuxt/schema'
 import {
   createResolver,
   addComponentsDir,
   addImportsDir,
   installModule,
 } from '@nuxt/kit'
-import { defineDesktopTheme } from '@owdproject/core'
+import { defineDesktopTheme } from 'nuxt-desktop'
 import {
   registerTailwindPath,
   registerThemeTailwindPath,
 } from '@owdproject/kit-tailwind/kit/registerTailwindPath'
 import { installWin95BuiltInApps } from './runtime/apps/installBuiltInApps'
 
-export default defineDesktopTheme({
+const theme: NuxtModule<any> = defineDesktopTheme({
   meta: {
     name: 'desktop-theme-win95',
   },
@@ -45,7 +47,11 @@ export default defineDesktopTheme({
       config.corePlugins = { ...(config.corePlugins ?? {}), preflight: false }
     })
 
-    nuxt.options.css.push(resolve('./runtime/assets/styles/index.scss'))
+    const cssEntry = existsSync(resolve('./runtime/assets/styles/index.css'))
+      ? resolve('./runtime/assets/styles/index.css')
+      : resolve('./runtime/assets/styles/index.scss')
+
+    nuxt.options.css.push(cssEntry)
 
     addComponentsDir({
       path: resolve('./runtime/components'),
@@ -53,12 +59,16 @@ export default defineDesktopTheme({
     })
 
     nuxt.hook('i18n:registerModule', (register) => {
+      const enFile = existsSync(resolve('./runtime/i18n/locales/en.js'))
+        ? 'locales/en.js'
+        : 'locales/en.ts'
+
       register({
-        langDir: resolve('./i18n'),
+        langDir: resolve('./runtime/i18n'),
         locales: [
           {
             code: 'en',
-            file: 'locales/en.ts',
+            file: enFile,
           },
         ],
       })
@@ -72,3 +82,6 @@ export default defineDesktopTheme({
     installWin95BuiltInApps(nuxt, import.meta.url)
   },
 })
+
+export default theme
+

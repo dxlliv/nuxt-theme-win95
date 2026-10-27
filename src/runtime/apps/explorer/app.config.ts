@@ -30,7 +30,7 @@ export default {
     },
   },
   commands: {
-    explorer: (app: IApplicationController, args: unknown) => {
+    explorer: (app: any, args: unknown) => {
       const a = args as { _?: string[] } | undefined
       const pathArg = a?._?.[1]
       app.openWindow('main', undefined, { path: pathArg ?? '/' })

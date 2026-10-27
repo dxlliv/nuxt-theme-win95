@@ -1,9 +1,9 @@
-import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
-import { useApplicationEntries } from '@owdproject/core/runtime/composables/useApplicationEntries'
-import { useDesktopDefaultAppsStore } from '@owdproject/core/runtime/stores/storeDesktopDefaultApps'
-import { useDesktopSession } from '@owdproject/core/runtime/composables/useDesktopSession'
-import { useDesktopShellOptions } from '@owdproject/core/runtime/composables/useDesktopShellOptions'
-import { ref, computed } from '@vue/reactivity'
+import { useApplicationManager } from 'nuxt-desktop/runtime/composables/useApplicationManager'
+import { useApplicationEntries } from 'nuxt-desktop/runtime/composables/useApplicationEntries'
+import { useDesktopDefaultAppsStore } from 'nuxt-desktop/runtime/stores/storeDesktopDefaultApps'
+import { useDesktopSession } from 'nuxt-desktop/runtime/composables/useDesktopSession'
+import { useDesktopShellOptions } from 'nuxt-desktop/runtime/composables/useDesktopShellOptions'
+import { ref, computed } from 'vue'
 
 export function useSystemBar() {
   const applicationManager = useApplicationManager()
@@ -32,7 +32,7 @@ export function useSystemBar() {
         label: 'Programs',
         image:
           'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAAH2U1dRAAAACXBIWXMAAAsSAAALEgHS3X78AAAAMFBMVEUAAAAAAAAAAIAAAP8AgAAA/wAA//+AAACAAICAgACAgIDAwMD/AAD/AP///wD////KhcoRAAAAAXRSTlMAQObYZgAAAQlJREFUKM91kD1OwzAYhl8GlizAFXyFHsADcI4egQNQwVqJBcZshY1ESgVLEZbasYdgYWXAqAoFiQhePn9x3IDgGaxHr/39JABQeRRE9i4K/4gXYvsIpSsmqK4MUU1JQI+Auy/kmffn8MY08GQ8UNsHIFjWva184ClIoYiULiAyPaE9aHCdS2utR5I9BYkdfsThzkmXCdBol5sfohMuRW6NMVLeXsld4xah8yrI8s0erjZJnkcBFvs1n1VS0km3T9YOT2Rfc6GX6Bd07IZg3uPiv6D9J3FbDUyLTI3Bpm0KlqzJ12EKZqc8G3M94B8lW9Kp5NqSlqMQBEoOhhzf8fM4Bb0SDfqL/eYb+jIu+mJvVH0AAAAASUVORK5CYII=',
-        items: appEntriesSortedByTitle.value.map((appEntry) => {
+        items: appEntriesSortedByTitle.value.map((appEntry: any) => {
           return {
             label: appEntry.title,
             icon: appEntry.icon,

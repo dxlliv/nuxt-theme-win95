@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@owdproject/core'],
+  modules: ['nuxt-desktop'],
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
   },

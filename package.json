@@ -42,6 +42,9 @@
     "src"
   ],
   "scripts": {
+    "setup": "node scripts/setup-standalone.mjs",
+    "modules:status": "node scripts/setup-standalone.mjs status",
+    "modules:pull": "node scripts/setup-standalone.mjs pull",
     "prepack": "nuxt-module-build build",
     "dev": "pnpm run dev:prepare && cd playground && pnpm exec nuxt dev",
     "dev:build": "nuxt build playground",
@@ -53,13 +56,14 @@
     "validate": "desktop validate ."
   },
   "dependencies": {
-    "@nuxt/kit": "^4.4.4",
-    "@owdproject/kit-primevue": "workspace:*"
+    "@nuxt/kit": "^4.6.2",
+    "@owdproject/kit-primevue": "workspace:*",
+    "nuxt-desktop": "workspace:*"
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.2.4",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.4.4",
+    "@nuxt/schema": "^4.6.2",
     "@owdproject/core": "workspace:*",
     "@owdproject/module-fs": "workspace:*",
     "@owdproject/app-terminal": "workspace:*",
@@ -68,18 +72,19 @@
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/test-utils": "^2.4.10",
     "jsdom": "~29.1.1",
-    "nuxt": "^4.4.4",
+    "nuxt": "^4.6.2",
     "typescript": "~6.0.3",
     "vitest": "^4.1.5",
     "vue-tsc": "^3.2.7"
   },
   "peerDependencies": {
-    "@owdproject/core": "^3.3.1",
+    "@owdproject/core": ">=4.0.0-alpha.0",
+    "nuxt-desktop": ">=1.0.0",
     "@owdproject/kit-primevue": "^0.1.0",
     "@owdproject/kit-tailwind": "^0.1.0",
     "@owdproject/module-fs": "^0.0.6",
     "@owdproject/module-persistence": "^0.1.0",
-    "nuxt": "^4.4.4"
+    "nuxt": "^4.6.2"
   },
   "peerDependenciesMeta": {
     "@owdproject/module-fs": {

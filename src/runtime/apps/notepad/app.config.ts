@@ -1,5 +1,3 @@
-import type { IApplicationController } from '@owdproject/core'
-
 export default {
   id: 'org.owdproject.notepad',
   title: 'Notepad',
@@ -33,7 +31,7 @@ export default {
     },
   },
   commands: {
-    notepad: (app: IApplicationController, args: unknown) => {
+    notepad: (app: any, args: unknown) => {
       const a = args as { _?: string[] } | undefined
       // Extract file path if launched with one (e.g. `notepad file.txt`)
       const pathArg = a?._?.[1]

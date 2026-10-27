@@ -8,16 +8,12 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@owdproject/app-classic-audioplayer": "workspace:*",
-    "@owdproject/app-classic-videoplayer": "workspace:*",
-    "@owdproject/app-soundcloud": "workspace:*",
     "@owdproject/app-terminal": "workspace:*",
-    "@owdproject/app-wasmboy": "workspace:*",
-    "@owdproject/app-youtube": "workspace:*",
     "@owdproject/core": "workspace:*",
     "@owdproject/module-fs": "workspace:*",
     "@owdproject/module-persistence": "workspace:*",
     "@owdproject/theme-win95": "workspace:*",
-    "nuxt": "^4.4.4"
+    "nuxt-desktop": "workspace:*",
+    "nuxt": "^4.6.2"
   }
 }

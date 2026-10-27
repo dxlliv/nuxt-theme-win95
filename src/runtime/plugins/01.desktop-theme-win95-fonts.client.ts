@@ -1,3 +1,4 @@
+import { defineNuxtPlugin } from 'nuxt/app'
 import msSansSerif from '../assets/fonts/ms-sans-serif/MS Sans Serif.ttf?url'
 import msSansSerifBold from '../assets/fonts/ms-sans-serif-bold/MS Sans Serif Bold.ttf?url'
 

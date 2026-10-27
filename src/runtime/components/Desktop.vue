@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useSystemBar } from '../composables/useSystemBar'
-import { useDesktopSession } from '@owdproject/core/runtime/composables/useDesktopSession'
-import { useBlockNonInputContextMenu } from '@owdproject/core/runtime/composables/useBlockNonInputContextMenu'
-import { useDesktopWorkArea } from '@owdproject/core/runtime/composables/useDesktopWorkArea'
+import { useDesktopSession } from 'nuxt-desktop/runtime/composables/useDesktopSession'
+import { useBlockNonInputContextMenu } from 'nuxt-desktop/runtime/composables/useBlockNonInputContextMenu'
+import { useDesktopWorkArea } from 'nuxt-desktop/runtime/composables/useDesktopWorkArea'
 import Win95WindowSnapHints from './Win95WindowSnapHints.vue'
 import Win95ConfirmDialogs from './Win95ConfirmDialogs.vue'
 import DesktopBackground from './Background/DesktopBackground.vue'

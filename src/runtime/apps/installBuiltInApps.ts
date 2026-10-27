@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs'
 import {
   addComponentsDir,
   addPlugin,
@@ -16,9 +17,12 @@ export function installWin95BuiltInApps(nuxt: Nuxt, themeRoot: string) {
     if (app.when && !app.when(nuxt)) continue
 
     const appRoot = resolve(`./runtime/apps/${app.name}`)
+    const pluginSrc = existsSync(resolve(appRoot, 'plugin.js'))
+      ? resolve(appRoot, 'plugin.js')
+      : resolve(appRoot, 'plugin.ts')
 
     addPlugin({
-      src: resolve(appRoot, 'plugin.ts'),
+      src: pluginSrc,
       mode: 'client',
       name: `desktop-theme-win95-${app.name}`,
       order: 1,

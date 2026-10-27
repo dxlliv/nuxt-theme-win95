@@ -1,6 +1,6 @@
 import { nextTick } from 'vue'
 import { defineNuxtPlugin } from 'nuxt/app'
-import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
+import { useApplicationManager } from 'nuxt-desktop/runtime/composables/useApplicationManager'
 import { openVfsFile } from '@owdproject/module-fs/runtime/utils/utilFsOpenFile'
 
 export default defineNuxtPlugin({
