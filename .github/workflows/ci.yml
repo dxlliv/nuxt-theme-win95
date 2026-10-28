@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        run: npm i -g --force corepack@latest && corepack enable
+
+      - name: Build theme module
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm run prepack
+
+      - name: Prepare playground
+        working-directory: playground
+        run: |
+          pnpm install --no-frozen-lockfile
+          pnpm exec nuxt prepare
+
+      - name: Build playground (SPA export)
+        working-directory: playground
+        run: pnpm exec nuxt generate
+        env:
+          NUXT_APP_BASE_URL: /${{ github.event.repository.name }}/
+
+      - name: Upload playground artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-dist
+          path: playground/.output/public

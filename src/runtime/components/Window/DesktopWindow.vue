@@ -1,0 +1,88 @@
+<script setup lang="ts">
+import { useWindowDragHandlers } from '@owdproject/nuxt/runtime/composables/useWindowDragHandlers'
+import type { IWindowController } from '@owdproject/core'
+
+const props = defineProps<{
+  window?: IWindowController
+  content?: any
+}>()
+
+const { onDragStart, onDragEnd } = useWindowDragHandlers(
+  () => props.window,
+)
+</script>
+
+<template>
+  <DesktopCoreWindow
+    v-bind="$props"
+    class="owd-window resizable-component"
+    v-show="window?.state?.active ?? true"
+    @drag:start="onDragStart"
+    @drag:end="onDragEnd"
+  >
+    <Card class="p-card--border">
+      <template #header>
+        <DesktopWindowNav>
+          <template v-slot:prepend>
+            <slot name="nav-prepend" />
+          </template>
+
+          <template v-slot:append>
+            <slot name="nav-append" />
+          </template>
+        </DesktopWindowNav>
+        <div :id="'owd-window-header-extension-' + window?.state?.id" class="owd-window-header-extension" />
+      </template>
+      <template #content>
+        <div v-if="window?.menu && window.menu.length > 0" class="owd-window-menubar">
+          <Menubar :breakpoint="'0px'" :model="window.menu" />
+        </div>
+        <DesktopWindowContent>
+          <slot />
+        </DesktopWindowContent>
+      </template>
+    </Card>
+  </DesktopCoreWindow>
+</template>
+
+<style scoped lang="scss">
+.owd-window.resizable-component {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 160px;
+  min-height: 160px;
+  text-align: left;
+  cursor: default;
+  border-radius: var(--p-window-border-radius);
+
+  @media (max-width: 599px) {
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-width: 100vw;
+    max-height: 100vh;
+    height: 100vh !important;
+    z-index: 9999999999 !important;
+  }
+
+  :deep(> .p-card) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--owd-gap);
+
+    > .p-card-header {
+      margin-bottom: 2px;
+    }
+
+    > .p-card-body {
+      height: calc(100% - var(--owd-windov-nav-height));
+
+      > .p-card-content {
+        height: 100%;
+      }
+    }
+  }
+}
+</style>

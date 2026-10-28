@@ -1,41 +1,40 @@
-<p align="center">
-  <img width="160" height="160" src="https://avatars.githubusercontent.com/u/65117737?s=160&v=4" />
-</p>
-<h1 align="center">Windows 95 Theme</h1>
-<h3 align="center">
-  Windows 95 Theme for your Open Web Desktop client.
-</h3>
+# Win95 Theme
 
-## Overview
+Windows 95 style shell for Open Web Desktop, using `@owdproject/nuxt` directly.
 
-This theme for Open Web Desktop recreates the old fashioned Windows 95 UI.
+## Standalone playground
 
-## Installation
+From a clone of this theme repository:
 
-1.  Navigate to your client folder in your terminal:
+```sh
+pnpm install
+pnpm dev
+```
 
-    ```bash
-    cd owd-client
-    ```
+The local workspace includes only the theme and its playground. Dependencies are installed as packages; no client checkout or `nuxt-desktop` is required. During local snapshot testing, use the local registry: `pnpm install --registry http://localhost:4873/`.
 
-2.  Install the desktop module using npm or yarn:
+```sh
+pnpm dev:build
+pnpm dev:generate
+```
 
-    ```bash
-    npm install @owdproject/theme-win95
-    ```
+## Use in another Nuxt application
 
-3.  Register the application in your desktop configuration file:
+Install `@dxlliv/owd-nuxt-theme-win95` and `@owdproject/nuxt`, then configure:
 
-    ```typescript
-    // owd.config.ts
-    export default defineDesktopConfig({
-        theme: '@owdproject/theme-win95',
-        apps: [
-            '@owdproject/app-about',
-        ]
-    })
-    ```
+```ts
+export default defineNuxtConfig({
+  ssr: false,
+  modules: ['@owdproject/nuxt'],
+  desktop: {
+    theme: '@dxlliv/owd-nuxt-theme-win95',
+    systemBar: { enabled: true, startButton: true, position: 'bottom' },
+  },
+})
+```
+
+The playground also installs the filesystem module, Pinia persistence, and the terminal app. Window chrome lives in `src/runtime/components/Window/`.
 
 ## License
 
-The application is released under the [MIT License](LICENSE).
+MIT

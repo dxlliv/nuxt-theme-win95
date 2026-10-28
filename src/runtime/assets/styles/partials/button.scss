@@ -1,0 +1,282 @@
+:root {
+  --p-button-primary-background: rgb(var(--owd-theme-color-light));
+  --p-button-primary-hover-background: var(--p-button-primary-background);
+  --p-button-primary-active-background: var(--p-button-primary-background);
+  --p-button-primary-hover-background: var(--p-button-primary-background);
+
+  --p-button-primary-border-color: var(--p-card-border-color);
+}
+
+.p-button {
+  display: inline-block;
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--p-font-size);
+  border: 0;
+  padding: 0;
+
+  &:not(&-text) {
+    &:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-style: solid;
+      border-width: var(--owd-border-width);
+      border-color: var(--p-card-border-color);
+      box-shadow: var(--p-card-box-shadow);
+      content: '';
+    }
+  }
+
+  &:not([disabled]):active,
+  &:not([disabled]).p-button--active {
+    & > span {
+      font-weight: bold;
+    }
+
+    &:before {
+      border-color: rgb(var(--owd-theme-color-black))
+        rgb(var(--owd-theme-color-white)) rgb(var(--owd-theme-color-white))
+        rgb(var(--owd-theme-color-black));
+      box-shadow:
+        rgb(var(--owd-theme-color-dark)) var(--owd-border-width)
+          var(--owd-border-width) 0 0 inset,
+        rgb(var(--owd-theme-color-grey)) calc(var(--owd-border-width) * -1)
+          calc(var(--owd-border-width) * -1) 0 0 inset;
+    }
+
+    :deep(span .owd-button__icon) {
+      //margin-top: 2px;
+    }
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &-icon-only {
+    border-radius: 0 !important;
+  }
+
+  &--primary {
+    &:before {
+      left: 2px;
+      top: 2px;
+      width: calc(100% - var(--owd-gap));
+      height: calc(100% - var(--owd-gap));
+      outline: var(--p-card-color) solid var(--owd-border-width);
+    }
+  }
+
+  [disabled] {
+    color: rgb(var(--owd-theme-color-dark));
+    text-shadow: rgb(var(--owd-theme-color-white)) var(--owd-border-width) 1px;
+  }
+
+  &:not(&--icon) {
+    padding: 0 8px;
+  }
+
+  &-sm {
+    min-width: 21px;
+    height: 20px;
+  }
+
+  &-lg {
+    min-width: 40px;
+    height: 40px;
+  }
+
+  & > .iconify {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black;
+  }
+
+  // special buttons
+
+  &.p-button--explorer-toolbar {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    flex-shrink: 0;
+    min-width: var(--desktop-explorer-toolbar-btn-min-w, 72px) !important;
+    width: auto !important;
+    height: calc(var(--desktop-explorer-toolbar-h, 54px) - 4px) !important;
+    max-height: calc(var(--desktop-explorer-toolbar-h, 54px) - 4px) !important;
+    margin: 0 !important;
+    padding: 3px var(--desktop-explorer-toolbar-btn-px, 10px) 1px !important;
+    filter: grayscale(1);
+    font-family: var(--owd-font-family);
+    font-size: var(--p-font-size) !important;
+    line-height: 1.15 !important;
+    white-space: nowrap;
+    color: var(--p-card-color) !important;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    vertical-align: top;
+
+    &:not(:disabled):hover {
+      filter: grayscale(0);
+      background: transparent;
+      outline: 1px dotted rgb(var(--owd-theme-color-black));
+    }
+
+    &:disabled {
+      opacity: 0.45;
+    }
+
+    .p-button-label,
+    > span {
+      white-space: nowrap;
+    }
+
+    .p-button-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      height: 24px;
+      width: 100%;
+      margin-bottom: 2px;
+      padding: 0 4px;
+
+      img {
+        width: auto;
+        height: 24px;
+        max-height: 24px;
+        image-rendering: pixelated;
+      }
+    }
+
+    > img {
+      width: auto;
+      height: 24px;
+      max-height: 24px;
+      margin-bottom: 2px;
+      image-rendering: pixelated;
+    }
+  }
+
+  &.p-button--window-nav {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 21px;
+    width: 21px;
+    height: 21px;
+    padding: 0 !important;
+    border: 0 !important;
+    gap: 0;
+
+    // PrimeVue 4 icon-only buttons inject sizing pseudo-content.
+    &::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    > .iconify,
+    .iconify {
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      transform: none !important;
+      margin: 0 !important;
+      background: transparent !important;
+      width: 10px;
+      height: 10px;
+    }
+
+    &:not([disabled]):active,
+    &:not([disabled]).p-button--active {
+      .owd-button__window-nav-content .owd-button__icon:not(.owd-button__icon--close) {
+        transform: translate(1px, 1px);
+      }
+
+      .owd-button__window-nav-content .owd-button__icon--close {
+        transform: translate(1px, 1px) rotate(45deg);
+      }
+
+      .owd-button__window-nav-content .iconify {
+        transform: translate(1px, 1px);
+      }
+    }
+  }
+
+  &.p-button--system-bar {
+    // PrimeVue 4 injects `.p-button { font-size: 1rem }` after theme CSS.
+    height: 100%;
+    min-height: 22px;
+    font-size: var(--p-font-size);
+    line-height: 1rem;
+
+    > span,
+    .p-button-label {
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    &-start {
+      position: relative;
+      min-width: 64px;
+      padding-left: 44px !important;
+      font-weight: bold;
+      color: var(--p-card-color);
+    }
+
+    &:active,
+    &.p-button--active {
+      color: var(--p-card-color);
+
+      > span,
+      & {
+        position: relative;
+        z-index: 2;
+      }
+
+      > span {
+        pointer-events: none;
+      }
+
+      &:before {
+        z-index: 0;
+      }
+
+      &.p-button--system-bar-start:before {
+        background: repeating-conic-gradient(
+            rgb(var(--owd-theme-color-grey)) 0% 25%,
+            rgb(var(--owd-theme-color-white)) 25% 50%
+          )
+          0 0 / calc(var(--owd-border-width) * 2)
+          calc(var(--owd-border-width) * 2);
+        box-shadow:
+          rgb(var(--owd-theme-color-dark)) var(--owd-border-width)
+            var(--owd-border-width) 0 0 inset,
+          rgb(var(--owd-theme-color-grey)) calc(var(--owd-border-width) * -1)
+            calc(var(--owd-border-width) * -1) 0 0 inset,
+          rgb(var(--owd-theme-color-white)) 0 2px 0 0 inset;
+      }
+    }
+  }
+
+  &--bolded {
+    & > span {
+    }
+  }
+}
+
+.p-buttongroup {
+  & > .p-button:not(:last-child) {
+    margin-right: -2px;
+  }
+}

@@ -1,0 +1,222 @@
+<script setup lang="ts">
+import { nextTick, onUnmounted, ref } from 'vue'
+import TieredMenu from 'primevue/tieredmenu'
+import { useSystemBar } from '../../composables/useSystemBar'
+
+const systemBar = useSystemBar()
+const menu = ref<InstanceType<typeof TieredMenu> | null>(null)
+const startAnchorRef = ref<HTMLElement | null>(null)
+
+/** Gap between Start menu and taskbar edge (matches Win95 spacing). */
+const START_MENU_GAP_PX = 2
+
+let resizeListener: (() => void) | null = null
+
+const startMenuRowClass = 'owd-system-bar__start__menu__link'
+
+const startMenuPt = {
+  root: { class: 'owd-system-bar__start__menu' },
+  rootList: { class: 'owd-system-bar__start__menu__list' },
+  item: { class: 'owd-system-bar__start__menu__item' },
+  itemContent: { class: 'owd-system-bar__start__menu__item-content' },
+  itemLink: { class: startMenuRowClass },
+  submenu: { class: 'owd-system-bar__start__menu__submenu' },
+  separator: { class: 'owd-system-bar__start__menu__separator' },
+  transition: {
+    enterActiveClass: '',
+    enterFromClass: '',
+    enterToClass: '',
+    leaveActiveClass: '',
+    leaveFromClass: '',
+    leaveToClass: '',
+  },
+}
+
+function toggleStartMenu(event: Event) {
+  menu.value?.toggle(event)
+}
+
+function findStartMenuEl(): HTMLElement | null {
+  return document.querySelector<HTMLElement>(
+    '#win95_start_menu.owd-system-bar__start__menu, .owd-system-bar__start__menu.p-tieredmenu',
+  )
+}
+
+/** PrimeVue `absolutePosition` always opens below the anchor; flip when taskbar is at bottom. */
+function repositionStartMenu() {
+  nextTick(() => {
+    requestAnimationFrame(() => {
+    const menuEl = findStartMenuEl()
+    const anchorEl =
+      startAnchorRef.value?.querySelector<HTMLElement>(
+        '.owd-system-bar__start__button',
+      ) ?? startAnchorRef.value
+    if (!menuEl || !anchorEl) return
+
+    const barPosition = systemBar.position.value ?? 'bottom'
+    const btnRect = anchorEl.getBoundingClientRect()
+    const menuHeight = menuEl.offsetHeight
+
+    if (barPosition === 'bottom') {
+      menuEl.style.top = `${btnRect.top - menuHeight - START_MENU_GAP_PX}px`
+      menuEl.style.left = `${btnRect.left}px`
+    } else {
+      menuEl.style.top = `${btnRect.bottom + START_MENU_GAP_PX}px`
+      menuEl.style.left = `${btnRect.left}px`
+    }
+    })
+  })
+}
+
+function bindRepositionOnResize() {
+  unbindRepositionOnResize()
+  resizeListener = () => repositionStartMenu()
+  window.addEventListener('resize', resizeListener)
+}
+
+function unbindRepositionOnResize() {
+  if (!resizeListener) return
+  window.removeEventListener('resize', resizeListener)
+  resizeListener = null
+}
+
+function onMenuShow() {
+  systemBar.opened.value = true
+  repositionStartMenu()
+  bindRepositionOnResize()
+}
+
+function onMenuHide() {
+  systemBar.opened.value = false
+  unbindRepositionOnResize()
+}
+
+onUnmounted(() => {
+  unbindRepositionOnResize()
+})
+</script>
+
+<template>
+  <div ref="startAnchorRef" class="owd-system-bar__start">
+    <Button
+      class="owd-system-bar__start__button"
+      aria-haspopup="true"
+      :aria-expanded="systemBar.opened.value"
+      :pt:root="[
+        'p-button--system-bar p-button--system-bar-start',
+        { 'p-button--active': systemBar.opened.value },
+      ]"
+      aria-controls="win95_start_menu"
+      @click="toggleStartMenu"
+    >
+      <div class="owd-system-bar__start__button__icon" />
+      <span class="owd-system-bar__start__button__label">{{
+        $t('systemBar.start.button.label')
+      }}</span>
+    </Button>
+
+    <TieredMenu
+      id="win95_start_menu"
+      ref="menu"
+      popup
+      :model="systemBar.menu.value"
+      :pt="startMenuPt"
+      @show="onMenuShow"
+      @hide="onMenuHide"
+    >
+      <template #item="{ item, props: itemProps, hasSubmenu }">
+        <a
+          v-if="!item.separator"
+          v-bind="itemProps.action"
+          class="owd-system-bar__start__menu__link"
+        >
+          <img
+            v-if="item.image"
+            :src="item.image"
+            alt=""
+            class="owd-system-bar__start__menu__image"
+          />
+          <Icon
+            v-else-if="item.icon"
+            :name="item.icon"
+            :size="21"
+            class="owd-system-bar__start__menu__icon"
+          />
+          <span class="owd-system-bar__start__menu__label">{{ item.label }}</span>
+          <Icon
+            v-if="hasSubmenu"
+            class="owd-system-bar__start__menu__arrow"
+            name="mdi:menu-right"
+            :size="21"
+          />
+        </a>
+      </template>
+    </TieredMenu>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.owd-system-bar__start {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+
+  &__button {
+    height: 100%;
+    min-height: calc(var(--owd-system-bar-height) - 2 * var(--owd-gap));
+    color: var(--p-card-color);
+
+    &.p-button--active {
+      color: var(--p-card-color);
+    }
+
+    &__icon {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAAEEfUpiAAAACXBIWXMAAAsSAAALEgHS3X78AAABnElEQVRYhe1W7XLDIAyzuLx30id3fwCOEXa+tt12u6qXNoArhCNMRAhL+9X+Xfyo0r1vBxwqIvAcEJ04mHeATbK4Hq1U9QZNqQXA2NDmQ8Z+E0vQ55WjpKNN5BTAmAKwP4k44AqilP8gOE8qMj2DQxmp57hfuaGBguzx4yCIlhCtwGtD9XpvYSI414Dvcuk/wiJ56j0ii0CkGglJAFkmJi26K1D6Y8xClAW1RPllQKxsnaOIiDoS0VpYL+/jpctHU4BdiVXSAdRReiWXJAecBW0SHQHgSPocuLqKUqmNJJjjGs58kF22ne3USchulbkPnuHXkupd0IXcLdtPxcME6L6Xh30cCFMisPbWflf6o0W8KDBabFKFjt42VPatO1x9LPy4jVg8ca9kVBJ9qbxdLs8QegBjBtW3kXhkzjAx94F1HG4CtBXE2QNwZQo0Ns7BM8CYRUReTeF2bPGwCp96ILZB84fOl2QecIv0R4I/Knjsy0jqgH+Fs8fTQ5Mkxi7o0VvrXskDGfh9ho/rqP3kuiwmuo+E3uH8nKl/A2+XwABg59RRoQAAAABJRU5ErkJggg==);
+      background-position: 8px;
+      background-repeat: no-repeat;
+      background-size: 24px;
+      height: 22px;
+      left: 2px;
+      padding-left: 38px;
+      padding-right: 8px;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &__label {
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+
+}
+
+:global(.owd-system-bar__start__menu__link) {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: var(--owd-start-menu-root-row-height, 36px);
+  min-height: var(--owd-start-menu-root-row-height, 36px);
+  gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  line-height: 1.2;
+}
+
+:global(.owd-system-bar__start__menu__image) {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+:global(.owd-system-bar__start__menu__arrow) {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+</style>
