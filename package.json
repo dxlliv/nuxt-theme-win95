@@ -7,13 +7,13 @@
     "owd-themes",
     "owd-modules"
   ],
-  "homepage": "https://github.com/dxlliv/theme-win95#readme",
+  "homepage": "https://github.com/dxlliv/owd-nuxt-theme-win95#readme",
   "bugs": {
-    "url": "https://github.com/dxlliv/theme-win95/issues"
+    "url": "https://github.com/dxlliv/owd-nuxt-theme-win95/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dxlliv/theme-win95.git"
+    "url": "git+https://github.com/dxlliv/owd-nuxt-theme-win95.git"
   },
   "license": "MIT",
   "author": {
@@ -47,7 +47,7 @@
     "prepack": "nuxt-module-build build",
     "dev": "pnpm run dev:prepare && cd playground && pnpm exec nuxt dev",
     "dev:build": "nuxt build playground",
-    "dev:generate": "NUXT_APP_BASE_URL=${NUXT_APP_BASE_URL:-/theme-win95/} nuxt generate playground",
+    "dev:generate": "NUXT_APP_BASE_URL=${NUXT_APP_BASE_URL:-/owd-nuxt-theme-win95/} nuxt generate playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && cd playground && pnpm exec nuxt prepare",
     "lint": "eslint .",
     "test": "vitest run",
