@@ -1,6 +1,6 @@
 {
   "name": "@dxlliv/owd-nuxt-theme-win95",
-  "version": "4.0.0-alpha.2",
+  "version": "4.0.0-alpha.3",
   "description": "Open Web Desktop theme",
   "keywords": [
     "owd-client",
@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "^4.6.2",
-    "@owdproject/kit-primevue": "^4.0.0-alpha.2",
+    "@owdproject/kit-primevue": "^4.0.0-alpha.3",
     "@owdproject/nuxt": "^4.0.0-alpha.3"
   },
   "devDependencies": {
@@ -64,10 +64,10 @@
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.6.2",
     "@owdproject/core": "^4.0.0-alpha.3",
-    "@owdproject/module-fs": "^4.0.0-alpha.2",
-    "@owdproject/app-terminal": "^4.0.0-alpha.2",
-    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.2",
-    "@owdproject/kit-primevue": "^4.0.0-alpha.2",
+    "@owdproject/module-fs": "^4.0.0-alpha.3",
+    "@owdproject/app-terminal": "^4.0.0-alpha.3",
+    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.3",
+    "@owdproject/kit-primevue": "^4.0.0-alpha.3",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/test-utils": "^2.4.10",
     "jsdom": "~29.1.1",
@@ -81,10 +81,10 @@
   "peerDependencies": {
     "@owdproject/core": "^4.0.0-alpha.3",
     "@owdproject/nuxt": "^4.0.0-alpha.3",
-    "@owdproject/kit-primevue": "^4.0.0-alpha.2",
-    "@owdproject/kit-tailwind": "^4.0.0-alpha.2",
-    "@owdproject/module-fs": "^4.0.0-alpha.2",
-    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.2",
+    "@owdproject/kit-primevue": "^4.0.0-alpha.3",
+    "@owdproject/kit-tailwind": "^4.0.0-alpha.3",
+    "@owdproject/module-fs": "^4.0.0-alpha.3",
+    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.3",
     "nuxt": "^4.6.2"
   },
   "peerDependenciesMeta": {
@@ -94,5 +94,10 @@
     "@owdproject/nuxt-persistence-pinia": {
       "optional": true
     }
+  },
+  "publishConfig": {
+    "access": "public",
+    "tag": "alpha",
+    "registry": "https://registry.npmjs.org/"
   }
 }
