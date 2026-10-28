@@ -1,8 +1,8 @@
-import { useApplicationManager } from 'nuxt-desktop/runtime/composables/useApplicationManager'
-import { useApplicationEntries } from 'nuxt-desktop/runtime/composables/useApplicationEntries'
-import { useDesktopDefaultAppsStore } from 'nuxt-desktop/runtime/stores/storeDesktopDefaultApps'
-import { useDesktopSession } from 'nuxt-desktop/runtime/composables/useDesktopSession'
-import { useDesktopShellOptions } from 'nuxt-desktop/runtime/composables/useDesktopShellOptions'
+import { useApplicationManager } from '@owdproject/nuxt/runtime/composables/useApplicationManager'
+import { useApplicationEntries } from '@owdproject/nuxt/runtime/composables/useApplicationEntries'
+import { useDesktopDefaultAppsStore } from '@owdproject/nuxt/runtime/stores/storeDesktopDefaultApps'
+import { useDesktopSession } from '@owdproject/nuxt/runtime/composables/useDesktopSession'
+import { useDesktopShellOptions } from '@owdproject/nuxt/runtime/composables/useDesktopShellOptions'
 import { ref, computed } from 'vue'
 
 export function useSystemBar() {

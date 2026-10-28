@@ -1,70 +1,40 @@
-<p align="center">
-  <img width="160" height="160" src="https://avatars.githubusercontent.com/u/65117737?s=160&v=4" />
-</p>
-<h1 align="center">Win95 Theme</h1>
-<h3 align="center">
-  Windows 95 Theme for Open Web Desktop.
-</h3>
+# Win95 Theme
 
-## Overview
+Windows 95 style shell for Open Web Desktop, using `@owdproject/nuxt` directly.
 
-This theme for Open Web Desktop recreates the old fashioned Windows 95 UI.
+## Standalone playground
 
-## Installation
+From a clone of this theme repository:
 
-```bash
-pnpm desktop add @owdproject/theme-win95
-```
-
-## Development (monorepo)
-
-After changing theme source, rebuild the module stub before running the desktop:
-
-```bash
-# from client root
-pnpm run prepare:themes
-
-# or inside this package
-pnpm run dev:prepare
-```
-
-The theme ships as a Nuxt module (`src/module.ts` → `dist/module.mjs`). Window chrome lives under `src/runtime/components/Window/` (required for apps that use `<Window>`).
-
-## Playground
-
-From the theme package (monorepo or standalone clone):
-
-```bash
+```sh
 pnpm install
-pnpm run dev:prepare
-pnpm run dev
+pnpm dev
 ```
 
-Static preview build (GitHub Pages uses the same output):
+The local workspace includes only the theme and its playground. Dependencies are installed as packages; no client checkout or `nuxt-desktop` is required. During local snapshot testing, use the local registry: `pnpm install --registry http://localhost:4873/`.
 
-```bash
-pnpm run dev:generate
+```sh
+pnpm dev:build
+pnpm dev:generate
 ```
 
-## Usage
+## Use in another Nuxt application
 
-#### Available configuration
+Install `@dxlliv/owd-nuxt-theme-win95` and `@owdproject/nuxt`, then configure:
 
-You could set this configuration in `/desktop/desktop.config.ts`:
-
-```js
-export default defineDesktopConfig({
-  theme: '@owdproject/theme-win95',
+```ts
+export default defineNuxtConfig({
+  ssr: false,
+  modules: ['@owdproject/nuxt'],
   desktop: {
-    systemBar: {
-      enabled: true,
-      startButton: true,
-      position: 'bottom'
-    }
-  }
+    theme: '@dxlliv/owd-nuxt-theme-win95',
+    systemBar: { enabled: true, startButton: true, position: 'bottom' },
+  },
 })
 ```
 
+The playground also installs the filesystem module, Pinia persistence, and the terminal app. Window chrome lives in `src/runtime/components/Window/`.
+
 ## License
 
-The application is released under the [MIT License](LICENSE).
+MIT

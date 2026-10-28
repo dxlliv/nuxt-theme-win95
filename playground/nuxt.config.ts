@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
-  modules: ['nuxt-desktop'],
+  modules: ['@owdproject/nuxt'],
+  desktop: {
+    theme: '@dxlliv/owd-nuxt-theme-win95',
+  },
   app: {
     baseURL: process.env.NUXT_APP_BASE_URL || '/',
   },

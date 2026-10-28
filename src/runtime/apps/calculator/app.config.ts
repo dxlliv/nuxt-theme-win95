@@ -30,13 +30,6 @@ export default {
   },
   commands: {
     calculator: (app: any) => {
-      const existing = app.getFirstWindowByModel('main')
-      if (existing) {
-        existing.actions.setActive(true)
-        existing.actions.bringToFront()
-        return existing
-      }
-
       return app.openWindow('main')
     },
   },

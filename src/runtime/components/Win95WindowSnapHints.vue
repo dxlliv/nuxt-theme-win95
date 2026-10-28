@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WindowSnapHintsBase from 'nuxt-desktop/runtime/components/window/DesktopCoreWindowSnapHintsBase.vue'
+import WindowSnapHintsBase from '@owdproject/nuxt/runtime/components/window/DesktopCoreWindowSnapHintsBase.vue'
 </script>
 
 <template>

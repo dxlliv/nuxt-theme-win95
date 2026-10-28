@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWindowDragHandlers } from 'nuxt-desktop/runtime/composables/useWindowDragHandlers'
+import { useWindowDragHandlers } from '@owdproject/nuxt/runtime/composables/useWindowDragHandlers'
 import type { IWindowController } from '@owdproject/core'
 
 const props = defineProps<{
@@ -15,6 +15,7 @@ const { onDragStart, onDragEnd } = useWindowDragHandlers(
 <template>
   <DesktopCoreWindow
     v-bind="$props"
+    class="owd-window resizable-component"
     v-show="window?.state?.active ?? true"
     @drag:start="onDragStart"
     @drag:end="onDragEnd"

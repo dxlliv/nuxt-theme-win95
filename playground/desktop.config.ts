@@ -1,7 +1,6 @@
-import { defineDesktopConfig } from 'nuxt-desktop'
+import { defineDesktopConfig } from '@owdproject/nuxt'
 
 export default defineDesktopConfig({
-  theme: '@owdproject/theme-win95',
   modules: ['@owdproject/module-fs', '@owdproject/nuxt-persistence-pinia'],
   apps: [
     '@owdproject/app-terminal',
@@ -10,10 +9,5 @@ export default defineDesktopConfig({
   terminal: {
     welcomeMessage: 'Microsoft Windows 95',
     prompt: 'C:\\>',
-  },
-  fs: {
-    mounts: {
-      '/mnt/test': '/test-small.zip',
-    },
   },
 })

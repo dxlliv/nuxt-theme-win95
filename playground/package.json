@@ -8,12 +8,17 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@owdproject/app-terminal": "workspace:*",
-    "@owdproject/core": "workspace:*",
-    "@owdproject/module-fs": "workspace:*",
-    "@owdproject/nuxt-persistence-pinia": "workspace:*",
-    "@owdproject/theme-win95": "workspace:*",
-    "nuxt-desktop": "workspace:*",
-    "nuxt": "^4.6.2"
+    "@owdproject/app-terminal": "^4.0.0-alpha.2",
+    "@owdproject/core": "^4.0.0-alpha.3",
+    "@owdproject/module-fs": "^4.0.0-alpha.2",
+    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.2",
+    "@dxlliv/owd-nuxt-theme-win95": "workspace:*",
+    "@owdproject/nuxt": "^4.0.0-alpha.3",
+    "nuxt": "^4.6.2",
+    "primevue": "^4.5.5"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19",
+    "jiti": "^2.7.0"
   }
 }

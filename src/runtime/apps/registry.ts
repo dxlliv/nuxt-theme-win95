@@ -1,5 +1,5 @@
 import type { Nuxt } from '@nuxt/schema'
-import { hasDesktopModule } from 'nuxt-desktop'
+import { hasDesktopModule } from '@owdproject/nuxt'
 
 /**
  * Built-in Win95 theme apps under `runtime/apps/<name>/`.
