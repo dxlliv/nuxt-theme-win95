@@ -11,7 +11,7 @@
     "@owdproject/app-terminal": "workspace:*",
     "@owdproject/core": "workspace:*",
     "@owdproject/module-fs": "workspace:*",
-    "@owdproject/module-persistence": "workspace:*",
+    "@owdproject/nuxt-persistence-pinia": "workspace:*",
     "@owdproject/theme-win95": "workspace:*",
     "nuxt-desktop": "workspace:*",
     "nuxt": "^4.6.2"

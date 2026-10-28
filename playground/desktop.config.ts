@@ -2,7 +2,7 @@ import { defineDesktopConfig } from 'nuxt-desktop'
 
 export default defineDesktopConfig({
   theme: '@owdproject/theme-win95',
-  modules: ['@owdproject/module-fs', '@owdproject/module-persistence'],
+  modules: ['@owdproject/module-fs', '@owdproject/nuxt-persistence-pinia'],
   apps: [
     '@owdproject/app-terminal',
   ],

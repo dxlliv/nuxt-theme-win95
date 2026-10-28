@@ -67,7 +67,7 @@
     "@owdproject/core": "workspace:*",
     "@owdproject/module-fs": "workspace:*",
     "@owdproject/app-terminal": "workspace:*",
-    "@owdproject/module-persistence": "workspace:*",
+    "@owdproject/nuxt-persistence-pinia": "workspace:*",
     "@owdproject/kit-primevue": "workspace:*",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vue/test-utils": "^2.4.10",
@@ -83,14 +83,14 @@
     "@owdproject/kit-primevue": "^0.1.0",
     "@owdproject/kit-tailwind": "^0.1.0",
     "@owdproject/module-fs": "^0.0.6",
-    "@owdproject/module-persistence": "^0.1.0",
+    "@owdproject/nuxt-persistence-pinia": "^0.1.0",
     "nuxt": "^4.6.2"
   },
   "peerDependenciesMeta": {
     "@owdproject/module-fs": {
       "optional": true
     },
-    "@owdproject/module-persistence": {
+    "@owdproject/nuxt-persistence-pinia": {
       "optional": true
     }
   }
