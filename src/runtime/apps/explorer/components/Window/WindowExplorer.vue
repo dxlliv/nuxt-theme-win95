@@ -2,7 +2,7 @@
 import { useConfirm } from 'primevue/useconfirm'
 import { useI18n } from 'vue-i18n'
 import type { IWindowController } from '@owdproject/nuxt'
-import { createExplorerWindowMenuItems } from '@owdproject/module-fs/runtime/composables/useExplorerWindowMenu'
+import { createExplorerWindowMenuItems } from '@owdproject/module-nuxt-fs/runtime/composables/useExplorerWindowMenu'
 
 const props = defineProps<{
   window: IWindowController

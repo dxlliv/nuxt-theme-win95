@@ -1,9 +1,9 @@
 import { defineDesktopConfig } from '@owdproject/nuxt'
 
 export default defineDesktopConfig({
-  modules: ['@owdproject/module-fs', '@owdproject/nuxt-persistence-pinia'],
+  modules: ['@owdproject/module-nuxt-pinia-persistence'],
   apps: [
-    '@owdproject/app-terminal',
+    '@owdproject/app-nuxt-terminal',
   ],
   systemBar: { enabled: true, startButton: true },
   terminal: {

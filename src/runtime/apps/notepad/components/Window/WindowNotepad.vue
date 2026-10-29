@@ -205,7 +205,10 @@ function resetEditor() {
 
 async function loadVfs() {
   try {
-    const { fs } = await import('@zenfs/core')
+    // Optional VFS integration: `@zenfs/core` is not a dependency of this theme.
+    // `@vite-ignore` keeps the theme buildable when it is not installed; the
+    // import fails at runtime and Notepad falls back to local file handles.
+    const { fs } = await import(/* @vite-ignore */ '@zenfs/core')
     return fs
   } catch {
     return null

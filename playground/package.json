@@ -8,11 +8,10 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@owdproject/app-terminal": "^4.0.0-alpha.3",
+    "@owdproject/app-nuxt-terminal": "^4.0.0-alpha.3",
     "@owdproject/core": "^4.0.0-alpha.3",
-    "@owdproject/module-fs": "^4.0.0-alpha.3",
-    "@owdproject/nuxt-persistence-pinia": "^4.0.0-alpha.3",
-    "@dxlliv/owd-nuxt-theme-win95": "workspace:*",
+    "@owdproject/module-nuxt-pinia-persistence": "^4.0.0-alpha.3",
+    "@dxlliv/owd-theme-nuxt-win95": "workspace:*",
     "@owdproject/nuxt": "^4.0.0-alpha.3",
     "nuxt": "^4.6.2",
     "primevue": "^4.5.5"
