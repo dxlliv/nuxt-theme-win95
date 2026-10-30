@@ -3,7 +3,7 @@ import { hasDesktopModule } from '@owdproject/nuxt'
 
 /**
  * Built-in Win95 theme apps under `runtime/apps/<name>/`.
- * Explorer expects `@owdproject/module-nuxt-fs` in `desktop.config.ts` `modules`.
+ * Explorer expects `@owdproject/nuxt-module-fs` in `desktop.config.ts` `modules`.
  */
 export type Win95ThemeBuiltInApp = {
   name: string

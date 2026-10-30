@@ -10,7 +10,7 @@ import { defineDesktopTheme, hasDesktopModule } from '@owdproject/nuxt'
 import {
   registerTailwindPath,
   registerThemeTailwindPath,
-} from '@owdproject/kit-nuxt-tailwind/kit/registerTailwindPath'
+} from '@owdproject/nuxt-kit-tailwind/kit/registerTailwindPath'
 import { installWin95BuiltInApps } from './runtime/apps/installBuiltInApps'
 
 const theme: NuxtModule<any> = defineDesktopTheme({
@@ -37,10 +37,10 @@ const theme: NuxtModule<any> = defineDesktopTheme({
   async setup(_options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
 
-    // The PrimeVue explorer UI requires `@owdproject/module-nuxt-fs`, which is
+    // The PrimeVue explorer UI requires `@owdproject/nuxt-module-fs`, which is
     // intentionally not a dependency of this theme anymore. Register it only
     // when a consumer opted into module-fs.
-    await installModule('@owdproject/kit-nuxt-primevue', {
+    await installModule('@owdproject/nuxt-kit-primevue', {
       explorer: hasDesktopModule(nuxt, 'nuxt-fs'),
     })
 

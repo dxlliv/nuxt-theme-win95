@@ -20,14 +20,14 @@ pnpm dev:generate
 
 ## Use in another Nuxt application
 
-Install `@dxlliv/owd-theme-nuxt-win95` and `@owdproject/nuxt`, then configure:
+Install `@owdproject/nuxt-theme-win95` and `@owdproject/nuxt`, then configure:
 
 ```ts
 export default defineNuxtConfig({
   ssr: false,
   modules: ['@owdproject/nuxt'],
   desktop: {
-    theme: '@dxlliv/owd-theme-nuxt-win95',
+    theme: '@owdproject/nuxt-theme-win95',
     systemBar: { enabled: true, startButton: true, position: 'bottom' },
   },
 })
