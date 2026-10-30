@@ -11,7 +11,7 @@ pnpm install
 pnpm dev
 ```
 
-The local workspace includes only the theme and its playground. Dependencies are installed as packages; no client checkout or `nuxt-desktop` is required. During local snapshot testing, use the local registry: `pnpm install --registry http://localhost:4873/`.
+The local workspace includes only the theme and its playground. Dependencies are installed as packages; no client checkout is required. During local snapshot testing, use the local registry: `pnpm install --registry http://localhost:4873/`.
 
 ```sh
 pnpm dev:build
