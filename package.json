@@ -7,13 +7,13 @@
     "owd-themes",
     "owd-modules"
   ],
-  "homepage": "https://github.com/dxlliv/owd-nuxt-theme-win95#readme",
+  "homepage": "https://github.com/dxlliv/nuxt-theme-win95#readme",
   "bugs": {
-    "url": "https://github.com/dxlliv/owd-nuxt-theme-win95/issues"
+    "url": "https://github.com/dxlliv/nuxt-theme-win95/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dxlliv/owd-nuxt-theme-win95.git"
+    "url": "git+https://github.com/dxlliv/nuxt-theme-win95.git"
   },
   "license": "MIT",
   "author": {
