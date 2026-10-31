@@ -1,13 +1,7 @@
 import { defineDesktopConfig } from '@owdproject/nuxt'
+import showcase from './presets/showcase.ts'
 
 export default defineDesktopConfig({
-  modules: ['@owdproject/nuxt-module-pinia-persistence'],
-  apps: [
-    '@owdproject/nuxt-app-terminal',
-  ],
-  systemBar: { enabled: true, startButton: true },
-  terminal: {
-    welcomeMessage: 'Microsoft Windows 95',
-    prompt: 'C:\\>',
-  },
+  theme: '@owdproject/nuxt-theme-win95',
+  ...showcase,
 })

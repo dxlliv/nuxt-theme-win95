@@ -8,16 +8,32 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@owdproject/nuxt-app-terminal": "^4.0.0-alpha.3",
-    "@owdproject/core": "^4.0.0-alpha.3",
-    "@owdproject/nuxt-module-pinia-persistence": "^4.0.0-alpha.3",
+    "@owdproject/core": "4.0.0-alpha.3",
+    "@owdproject/nuxt": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-about": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-classic-audioplayer": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-classic-videoplayer": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-debug": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-dino": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-gridsky": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-slowroads": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-soundcloud": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-terminal": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-todo": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-twitch-chat": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-wasmboy": "4.0.0-alpha.3",
+    "@owdproject/nuxt-app-youtube": "4.0.0-alpha.3",
+    "@owdproject/nuxt-kit-primevue": "4.0.0-alpha.3",
+    "@owdproject/nuxt-kit-tailwind": "4.0.0-alpha.3",
+    "@owdproject/nuxt-module-fs": "4.0.0-alpha.3",
+    "@owdproject/nuxt-module-pinia-persistence": "4.0.0-alpha.3",
     "@owdproject/nuxt-theme-win95": "workspace:*",
-    "@owdproject/nuxt": "^4.0.0-alpha.3",
     "nuxt": "^4.6.2",
-    "primevue": "^4.5.5"
+    "primevue": "^4.5.5",
+    "vue-i18n": "^11.0.0"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.19",
-    "jiti": "^2.7.0"
+    "jiti": "^2.6.1",
+    "tailwindcss": "^3.4.19"
   }
 }
